@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DataContext } from '../context/DataProvider';
+import { FaSearch } from "react-icons/fa";
 
 function Search({ setHighlightedWidgetId }) {
     const { data } = useContext(DataContext);
@@ -43,11 +44,11 @@ function Search({ setHighlightedWidgetId }) {
                     type="text"
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    placeholder="Search for a widget"
+                    placeholder="Start typing to find a widget"
                     className="w-full h-5/6 rounded-md p-3 text-md pr-12 outline-none focus:border-[#2c296f] focus:border-2"
                 />
-                <button type="submit" className="absolute z-[5] right-3 bottom-1/5">
-                    <svg className="w-6 h-6" /* Insert your search icon here */></svg>
+                <button type="submit" className="absolute z-[5] right-3 bottom-6">
+                    <div className="w-5 h-5" ><FaSearch className='h-full w-full' /></div>
                 </button>
             </div>
 
@@ -57,7 +58,7 @@ function Search({ setHighlightedWidgetId }) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black bg-opacity-50 z-[1000] flex justify-center items-start pt-20"
+                        className="fixed inset-0 mt-20 bg-black bg-opacity-50 z-[1000] flex justify-center items-start pt-5"
                     >
                         <motion.div className="bg-white w-1/2 h-full rounded-lg p-5 shadow-lg max-h-[70vh] overflow-y-auto">
                             {searchResults.length === 0 ? (
@@ -68,6 +69,7 @@ function Search({ setHighlightedWidgetId }) {
                                         key={result.id}
                                         className="p-3 border-b cursor-pointer hover:bg-slate-100 flex justify-between items-center"
                                         onClick={() => {
+                                            // console.log("Search result clicked, widget ID:", result.id);
                                             setHighlightedWidgetId(result.id);
                                             setIsModalOpen(false);
                                             setSearchQuery("");

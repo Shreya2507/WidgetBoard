@@ -87,7 +87,7 @@ function AddWidget({ categoryIndex }) {
                   </div>
                   <div className=' w-2/3 h-9 '>
                     <button type='button' onClick={closeModal} className='w-5/12 mr-3 h-full bg-white font-semibold rounded-lg text-[#2c296f] border-2 border-[#2c296f]'>Cancel</button>
-                    <button type='submit' onClick={closeModal} className='w-5/12 h-full text-white font-semibold rounded-lg bg-[#2c296f] '>Confirm</button>
+                    <button type='submit' onClick={closeModal} className='w-5/12 h-full text-white font-semibold rounded-lg bg-[#2c296f]'>Confirm</button>
                   </div>
                 </form>
               </div>

@@ -8,6 +8,19 @@ function DisplayWidgets() {
     const { data, setData } = useContext(DataContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [categorySelected, setCategorySelected] = useState(0);
+
+    useEffect(() => {
+        if (data && data.length > 0) {
+            const visibility = data.map(category =>
+                category.widgets.map(widget => ({
+                    id: widget.id,
+                    visible: widget.visible
+                }))
+            );
+            setLocalVisibility(visibility);
+        }
+    }, [data]);
+
     const [localVisibility, setLocalVisibility] = useState(() =>
         data.map(category =>
             category.widgets.map(widget => ({
@@ -48,7 +61,7 @@ function DisplayWidgets() {
     return (
         <>
             <motion.button onClick={openModal} whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.95 }} type='button' className='w-1/2 py-2 bg-white rounded-md '>Add widgets</motion.button>
+                whileTap={{ scale: 0.95 }} type='button' className='w-1/2 py-2 bg-white rounded-md capitalize text-sm md:text-md'>Add widgets</motion.button>
 
             {/* MODAL TO ADD WIDGETS */}
             <AnimatePresence>
@@ -78,12 +91,12 @@ function DisplayWidgets() {
                                         </div>
                                         <div className=' h-full w-full p-3 flex flex-col justify-start gap-2 items-start overflow-y-auto'>
                                             {
-                                                data[categorySelected].widgets.map((widget, widgetIndex) => (
-                                                    <label key={widget.id} className="flex items-center gap-2 py-3 w-full text-sm border-2 border-slate-200 rounded-md px-5">
+                                                data[categorySelected]?.widgets.map((widget, widgetIndex) => (
+                                                    <label key={widget.id} className="flex items-center cursor-pointer gap-2 py-3 w-full text-sm border-2 border-slate-200 rounded-md px-5">
                                                         <input
                                                             className='cursor-pointer'
                                                             type="checkbox"
-                                                            checked={localVisibility[categorySelected][widgetIndex].visible}
+                                                            checked={localVisibility[categorySelected]?.[widgetIndex]?.visible}
                                                             onChange={() => {
                                                                 const newVisibility = [...localVisibility];
                                                                 newVisibility[categorySelected][widgetIndex].visible = !newVisibility[categorySelected][widgetIndex].visible;

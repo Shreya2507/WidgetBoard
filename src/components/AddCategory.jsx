@@ -32,7 +32,7 @@ function AddCategory() {
     return (
         <>
             <motion.button onClick={openModal} whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.95 }} type='button' className='w-1/2 py-2 bg-white rounded-md '>Add category</motion.button>
+                whileTap={{ scale: 0.95 }} type='button' className='w-1/2 py-2 bg-white rounded-md capitalize text-sm md:text-md'>Add category</motion.button>
 
             {/* MODAL TO ADD A CATEGORY */}
             <AnimatePresence>

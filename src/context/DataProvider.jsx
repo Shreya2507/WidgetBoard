@@ -8,7 +8,7 @@ export function DataProvider({ children }) {
 
   const [data, setData] = useState(() => {
     const storedData = localStorage.getItem('appData');
-    return storedData ? JSON.parse(storedData) : initialData;
+    return storedData ? JSON.parse(storedData) : initialData; //if data exists in localStorage then use, otherwise use initial data
   });
 
   useEffect(() => {

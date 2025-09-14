@@ -8,7 +8,7 @@ function Home() {
     navigate("/dashboard");
   }
   return (
-    <div className="h-screen w-screen flex flex-col gap-8 justify-center items-center bg-gradient-to-b from-white to-[#b6b3fe] font-inter-tight px-4 text-center">
+    <div className="h-screen w-screen flex flex-col gap-8 justify-center items-center bg-gradient-to-b from-white to-[#b3cdfe] font-inter-tight px-4 text-center">
       
       <motion.h1
         className="font-bold uppercase text-5xl md:text-6xl text-[#27227d]"
